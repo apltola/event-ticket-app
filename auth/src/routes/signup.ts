@@ -14,7 +14,7 @@ router.post(
       .isLength({ min: 4, max: 20 })
       .withMessage('Password must be 4 to 20 characters long'),
   ],
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     // get possible errors from express-validation
     const errors = validationResult(req);
 
