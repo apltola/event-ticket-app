@@ -44,14 +44,14 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    console.log('Connected to M0ngo 🥭');
+    console.log('🥭 Connected to M0ngo');
   } catch (error) {
     console.log('mongo error ==> ', error);
   }
 };
 
 app.listen(3000, () => {
-  console.log('Auth server up at 3000 🔐');
+  console.log('🔐 Auth server up at 3000');
 });
 
 start();
