@@ -5,6 +5,8 @@ let mongo: any;
 
 // before all tests start
 beforeAll(async () => {
+  process.env.JWT_KEY = 'konsukiepre';
+
   mongo = new MongoMemoryServer();
   const mongoUri = await mongo.getUri();
 
