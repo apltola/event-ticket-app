@@ -1,0 +1,51 @@
+:root {
+  --iosblack: #1c1c1e;
+  --iosdarkblue: #147efb;
+  --ioslightblue: #5fc9f8;
+  --iosred: #fc3d39;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: var(--iosblack);
+  background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  font-family: inherit;
+  text-transform: none;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+}
+
+.error-red {
+  color: var(--iosred);
+}
+
+/* 
+const iosColors = {
+  black: '#1c1c1e',
+  darkBlue: '#147efb',
+  lightBlue: '#5fc9f8',
+  red: '#fc3d39',
+  green: '#53d769',
+  darkGreen: '#30d158',
+  yellow: '#fecb2e',
+  orange: '#fd9426',
+  grey: '#8e8e93'
+}
+*/
