@@ -1,11 +1,12 @@
 import '../styles/global.css';
 import '../styles/elements/forms.css';
 import buildClient from '../api/buildClient';
+import Header from '../components/header';
 
 function AppComponent({ Component, pageProps, currentUser }) {
   return (
     <div>
-      <header>this is a header! {currentUser.email}</header>
+      <Header currentUser={currentUser} />
       <Component {...pageProps} />
     </div>
   );

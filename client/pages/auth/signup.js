@@ -23,7 +23,7 @@ const SignupPage = () => {
 
   return (
     <form className="signup-form" onSubmit={onSubmit}>
-      <h1>Sign up</h1>
+      <h1>Register</h1>
       <div>
         <label>Email Address</label>
         <input
@@ -40,7 +40,7 @@ const SignupPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <button type="submit">Sign up</button>
+      <button type="submit">Register</button>
       {errors}
     </form>
   );
