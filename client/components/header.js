@@ -1,17 +1,22 @@
 import Link from 'next/link';
+import axios from 'axios';
 
 const Header = ({ currentUser }) => {
   return (
     <header className="app-header">
       <nav className="nav">
         <Link href="/">
-          <a style={{ textDecoration: 'none', color: 'black' }}>ticket_app</a>
+          <a>ticket_app2020</a>
         </Link>
         <div className="right-container">
           {currentUser && (
             <div>
               <span>{currentUser.email}</span>
-              <button className="signout-button">Sign out</button>
+              <Link href="/auth/signout">
+                <a>
+                  <button className="signout-button">Sign out</button>
+                </a>
+              </Link>
             </div>
           )}
           {!currentUser && (
@@ -39,7 +44,7 @@ const Header = ({ currentUser }) => {
 
         a {
           text-decoration: none;
-          color: #1c1c1e;
+          color: inherit;
         }
 
         .right-container {

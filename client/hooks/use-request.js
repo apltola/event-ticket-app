@@ -13,17 +13,19 @@ const useRequest = ({ url, method, body, onSuccess }) => {
       }
       return response.data;
     } catch (err) {
-      setErrors(
-        <div>
-          {err.response.data.errors.map((err) => {
-            return (
-              <div className="error-red" key={err.message}>
-                {err.message}
-              </div>
-            );
-          })}
-        </div>
-      );
+      if (err.response) {
+        setErrors(
+          <div>
+            {err.response.data.errors.map((err) => {
+              return (
+                <div className="error-red" key={err.message}>
+                  {err.message}
+                </div>
+              );
+            })}
+          </div>
+        );
+      }
     }
   };
 

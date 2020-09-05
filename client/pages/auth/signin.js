@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 
 const SigninPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const emailInput = useRef();
 
   const { doRequest, errors } = useRequest({
     url: '/api/users/signin',
@@ -21,6 +22,10 @@ const SigninPage = () => {
     doRequest();
   };
 
+  useEffect(() => {
+    emailInput.current.focus();
+  }, []);
+
   return (
     <form className="signup-form" onSubmit={onSubmit}>
       <h1>Sign in</h1>
@@ -30,6 +35,7 @@ const SigninPage = () => {
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          ref={emailInput}
         />
       </div>
       <div>
