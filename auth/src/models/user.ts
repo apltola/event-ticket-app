@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema(
   },
   {
     toJSON: {
-      // remove all dumb stuff from document before returning it in a response
+      // take all the dumb stuff out of document before returning it in a response
       transform(doc, ret) {
         ret.id = ret._id;
         delete ret._id;
