@@ -23,7 +23,7 @@ const start = async () => {
 };
 
 app.listen(3000, () => {
-  console.log('🔐 Auth server up at 3000');
+  console.log('Tickets server up at 3000');
 });
 
 start();
