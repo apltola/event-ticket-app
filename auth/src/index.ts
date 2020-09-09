@@ -16,7 +16,7 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    console.log('🥭 Connected to M0ngo');
+    console.log('🥭 Auth Connected to M0ngo');
   } catch (error) {
     console.log('mongo error ==> ', error);
   }
