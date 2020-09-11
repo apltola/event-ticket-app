@@ -50,14 +50,13 @@ router.post(
       userId: req.currentUser!.id,
       status: OrderStatus.Created,
       expiresAt: expiration,
-      ticket: ticket,
+      ticket,
     });
     await order.save();
 
     // Publish an event saying that an order was created
-    res.status(201).send(order);
 
-    res.send({});
+    res.status(201).send(order);
   }
 );
 
