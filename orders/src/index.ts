@@ -37,13 +37,13 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    console.log('Connected to MongoDb');
+    console.log('🥭 Orders Connected to M0ngo');
   } catch (err) {
     console.error(err);
   }
 
   app.listen(3000, () => {
-    console.log('Listening on port 3000!!!!!!!!');
+    console.log('🛒 Orders server up at 3000');
   });
 };
 
