@@ -1,7 +1,5 @@
-import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../app';
-import { Order, OrderStatus } from '../../models/order';
 import { Ticket } from '../../models/ticket';
 
 const buildTicket = async () => {
@@ -29,12 +27,12 @@ it('fetches orders for an particular user', async () => {
     .expect(201);
 
   // create two orders as User #2
-  const res1 = await request(app)
+  const { body: orderOne } = await request(app)
     .post('/api/orders')
     .set('Cookie', user2)
     .send({ ticketId: ticket2.id })
     .expect(201);
-  const res2 = await request(app)
+  const { body: orderTwo } = await request(app)
     .post('/api/orders')
     .set('Cookie', user2)
     .send({ ticketId: ticket3.id })
@@ -47,5 +45,9 @@ it('fetches orders for an particular user', async () => {
     .expect(200);
 
   // make sure we only got the orders for User #2
-  console.log('res.body => ', response.body);
+  expect(response.body.length).toEqual(2);
+  expect(response.body[0].id).toEqual(orderOne.id);
+  expect(response.body[1].id).toEqual(orderTwo.id);
+  expect(response.body[0].ticket.id).toEqual(ticket2.id);
+  expect(response.body[1].ticket.id).toEqual(ticket3.id);
 });
