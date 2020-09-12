@@ -5,6 +5,7 @@ import {
   requireAuth,
 } from '@allutickets/common';
 import express, { Request, Response } from 'express';
+import { version } from 'mongoose';
 import { OrderCancelledPublisher } from '../events/publishers/order-cancelled-publisher';
 import { Order } from '../models/order';
 import { natsWrapper } from '../nats-wrapper';
@@ -31,6 +32,7 @@ router.delete(
     // publish an event saying order was cancelled
     new OrderCancelledPublisher(natsWrapper.client).publish({
       id: order.id,
+      version: order.version,
       ticket: {
         id: order.ticket.id,
       },
