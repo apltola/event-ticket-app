@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../app';
 import { OrderStatus } from '../../models/order';
@@ -5,9 +6,12 @@ import { Ticket } from '../../models/ticket';
 import { natsWrapper } from '../../nats-wrapper';
 
 it('deletes order with valid id', async () => {
+  const id = mongoose.Types.ObjectId().toHexString();
+
   const ticket = Ticket.build({
     title: 'concert',
     price: 29,
+    id,
   });
   ticket.save();
 
@@ -37,9 +41,11 @@ it('deletes order with valid id', async () => {
 });
 
 it('emits an order-deleted event', async () => {
+  const id = mongoose.Types.ObjectId().toHexString();
   const ticket = Ticket.build({
     title: 'concert',
     price: 29,
+    id,
   });
   ticket.save();
 

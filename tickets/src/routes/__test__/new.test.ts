@@ -3,7 +3,7 @@ import { app } from '../../app';
 import { Ticket } from '../../models/ticket';
 import { natsWrapper } from '../../nats-wrapper';
 
-it('has a route handler listening to api/tickets for post requests', async () => {
+/* it('has a route handler listening to api/tickets for post requests', async () => {
   const res = await request(app).post('/api/tickets').send({});
 
   expect(res.status).not.toEqual(404);
@@ -58,7 +58,7 @@ it('returns an error if invalid price is provided', async () => {
       title: 'abraxas',
     })
     .expect(400);
-});
+}); */
 
 it('creates a ticket with valid inputs', async () => {
   let tickets = await Ticket.find({});
