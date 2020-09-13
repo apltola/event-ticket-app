@@ -5,7 +5,6 @@ import {
   requireAuth,
 } from '@allutickets/common';
 import express, { Request, Response } from 'express';
-import { version } from 'mongoose';
 import { OrderCancelledPublisher } from '../events/publishers/order-cancelled-publisher';
 import { Order } from '../models/order';
 import { natsWrapper } from '../nats-wrapper';
