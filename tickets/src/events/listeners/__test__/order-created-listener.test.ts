@@ -17,7 +17,7 @@ const setup = async () => {
   });
   await ticket.save();
 
-  // create a fake event from Orders service
+  // create a fake order:created event from Orders service
   const data: OrderCreatedEvent['data'] = {
     id: mongoose.Types.ObjectId().toHexString(),
     version: 0,
@@ -51,10 +51,25 @@ it('sets the userId of the ticket', async () => {
 });
 
 it('acks the message', async () => {
-  const { listener, ticket, data, msg } = await setup();
+  const { listener, data, msg } = await setup();
 
   // this gets called when order-created event arrives from order service
   await listener.onMessage(data, msg);
 
   expect(msg.ack).toHaveBeenCalled();
+});
+
+it('publishes a ticket-updated event', async () => {
+  const { listener, data, msg } = await setup();
+
+  await listener.onMessage(data, msg);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
+
+  const ticketUpdatedData = JSON.parse(
+    (natsWrapper.client.publish as jest.Mock).mock.calls[0][1]
+  );
+
+  // check that ticket:updated event has the right orderId
+  expect(ticketUpdatedData.orderId).toEqual(data.id);
 });
