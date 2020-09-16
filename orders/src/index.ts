@@ -46,7 +46,7 @@ const start = async () => {
     });
     console.log('🥭 Orders Connected to M0ngo');
   } catch (err) {
-    console.error(err);
+    console.error(`Orders error --> ${err}`);
   }
 
   app.listen(3000, () => {

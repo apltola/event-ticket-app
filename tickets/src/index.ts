@@ -48,7 +48,7 @@ const start = async () => {
     });
     console.log('🥭 Tickets Connected to M0ngo');
   } catch (error) {
-    console.log('mongo error ==> ', error);
+    console.log(`tickets error --> ${error}`);
   }
 };
 
