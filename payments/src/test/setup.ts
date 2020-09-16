@@ -15,6 +15,8 @@ jest.mock('../nats-wrapper');
 
 let mongo: any;
 
+process.env.STRIPE_KEY = 'sk_test_4eYv55u4jGU2mEbX5l0hy5tN';
+
 // before all tests start
 beforeAll(async () => {
   process.env.JWT_KEY = 'konsukiepre';
