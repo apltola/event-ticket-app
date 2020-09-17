@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import axios from 'axios';
 
 const Header = ({ currentUser }) => {
   return (
@@ -10,8 +9,14 @@ const Header = ({ currentUser }) => {
         </Link>
         <div className="right-container">
           {currentUser && (
-            <div>
-              <span>{currentUser.email}</span>
+            <div className="auth-links">
+              <Link href="/tickets/new">
+                <a>Sell Tickets</a>
+              </Link>
+              <Link href="/orders">
+                <a>My orders</a>
+              </Link>
+              <span className="email">{currentUser.email}</span>
               <Link href="/auth/signout">
                 <a>
                   <button className="signout-button">Sign out</button>
@@ -25,7 +30,7 @@ const Header = ({ currentUser }) => {
                 <a>Sign in</a>
               </Link>
               <Link href="/auth/signup">
-                <a className="register-link">Register</a>
+                <a>Register</a>
               </Link>
             </div>
           )}
@@ -52,13 +57,16 @@ const Header = ({ currentUser }) => {
           display: flex;
           justify-content: flex-end;
         }
-
-        .register-link {
-          margin-left: 1em;
+        .auth-links {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: space-evenly;
+          align-items: center;
         }
 
-        .signout-button {
-          margin-left: 1em;
+        .auth-links a,
+        .auth-links span {
+          margin-left: 2vw;
         }
       `}</style>
     </header>
