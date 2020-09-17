@@ -25,7 +25,7 @@ const Header = ({ currentUser }) => {
             </div>
           )}
           {!currentUser && (
-            <div>
+            <div className="auth-links">
               <Link href="/auth/signin">
                 <a>Sign in</a>
               </Link>
