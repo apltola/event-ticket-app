@@ -1,14 +1,18 @@
 import React from 'react';
+import Link from 'next/link';
 
 const renderTickets = (tickets) => {
   if (tickets.length === 0) {
     return null;
   }
   return tickets.map((ticket) => {
-    console.log(typeof ticket.price);
     return (
-      <div style={{}}>
-        <span>{ticket.title}</span>
+      <div style={{}} key={ticket.id}>
+        <span>
+          <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`}>
+            <a>{ticket.title}</a>
+          </Link>
+        </span>
         <span style={{ paddingLeft: '10px', paddingRight: '10px' }}>–</span>
         <span>{ticket.price.toFixed(2)} €</span>
       </div>
