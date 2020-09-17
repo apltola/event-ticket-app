@@ -1,15 +1,37 @@
 import React from 'react';
 
-const LandingPage = ({ currentUser }) => {
-  if (currentUser) {
-    return <h1>you are signed in</h1>;
-  } else {
-    return <h1>you are not signed in</h1>;
+const renderTickets = (tickets) => {
+  if (tickets.length === 0) {
+    return null;
   }
+  return tickets.map((ticket) => {
+    console.log(typeof ticket.price);
+    return (
+      <div style={{}}>
+        <span>{ticket.title}</span>
+        <span style={{ paddingLeft: '10px', paddingRight: '10px' }}>–</span>
+        <span>{ticket.price.toFixed(2)} €</span>
+      </div>
+    );
+  });
+};
+
+const LandingPage = ({ currentUser, tickets }) => {
+  console.log(tickets);
+  return (
+    <div>
+      <h1>Tickets for sale</h1>
+      {renderTickets(tickets)}
+    </div>
+  );
 };
 
 LandingPage.getInitialProps = async (context, client, currentUser) => {
-  return {};
+  const { data } = await client.get('/api/tickets');
+
+  return {
+    tickets: data,
+  };
 };
 
 /* export async function getServerSideProps(context) {
