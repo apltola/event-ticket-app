@@ -16,7 +16,7 @@ const TicketShow = ({ ticket }) => {
     <section>
       <h1>{ticket.title}</h1>
       <h4>Price: {ticket.price.toFixed(2)} €</h4>
-      <button onClick={doRequest}>Purchase Ticket</button>
+      <button onClick={() => doRequest()}>Purchase Ticket</button>
       {errors}
     </section>
   );
