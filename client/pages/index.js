@@ -21,7 +21,7 @@ const renderTickets = (tickets) => {
 };
 
 const LandingPage = ({ currentUser, tickets }) => {
-  console.log(tickets);
+  console.log('test test test test');
   return (
     <div>
       <h1>Tickets for sale</h1>
