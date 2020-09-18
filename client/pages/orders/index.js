@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { formatPrice } from '../../helpers';
 
 const OrderIndex = ({ orders }) => {
   const [showAll, setShowAll] = useState(true);
@@ -41,7 +40,6 @@ const OrderIndex = ({ orders }) => {
           </thead>
           <tbody>
             {data.map((order) => {
-              //console.log(order);
               return (
                 <tr key={order.id}>
                   <td>{order.ticket.title}</td>
