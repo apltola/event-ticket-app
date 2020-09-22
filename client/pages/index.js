@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const renderTickets = (tickets) => {
   if (tickets.length === 0) {
@@ -20,13 +21,12 @@ const renderTickets = (tickets) => {
   });
 };
 
-const LandingPage = ({ currentUser, tickets }) => {
-  console.log('test test test test');
+const LandingPage = ({ tickets }) => {
   return (
-    <div>
+    <React.Fragment>
       <h1>Tickets for sale</h1>
       {renderTickets(tickets)}
-    </div>
+    </React.Fragment>
   );
 };
 
